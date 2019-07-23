@@ -94,7 +94,8 @@ namespace AppGWBEHealthVMSS
                 var azClient = AzureClient.CreateAzureClient(clientID, clientSecret, tenantID, azEnvironment, subscriptionID);
                 var scaleSet = azClient.VirtualMachineScaleSets.GetByResourceGroup(resourcegroupname, scaleSetName);
                 var appGw = azClient.ApplicationGateways.GetByResourceGroup(resourcegroupname, appGwName);
-
+                
+                log.LogInformation($"Config Variables: AzEnv: {azEnvironment}, tenant: {tenantID}, sub: {subscriptionID}, RG: {resourcegroupname}, ScaleSetName: {scaleSetName}, , appGwName: {appGwName}");
 
                 // We want to make sure that overprovisioning if OFF on the scaleset
                 // since we are creating and deleting vms very often it makes sense to 
